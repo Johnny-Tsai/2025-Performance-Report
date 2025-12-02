@@ -43,7 +43,7 @@ export function AchievementsSection({ achievements }: AchievementsSectionProps) 
       <h2 className="section-title">🏆 重大成就</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {achievements.map((achievement, index) => (
+        {achievements.map((achievement) => (
           <div 
             key={achievement.id}
             className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-5 border border-gray-100 hover:shadow-lg transition-shadow duration-300"

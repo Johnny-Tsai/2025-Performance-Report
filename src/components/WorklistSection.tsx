@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { WorkItem } from '../types/worklist';
 import { loadWorklistData } from '../data/worklistData';
 
@@ -182,48 +182,6 @@ export function WorklistSection() {
       case 4: return { label: '低', color: 'text-green-600' };
       default: return { label: '-', color: 'text-gray-400' };
     }
-  };
-
-  const getItemTags = (item: WorkItem) => {
-    const tags = [];
-    const projectNameUpper = (item.projectName || '').toUpperCase();
-    const descriptionUpper = (item.description || '').toUpperCase();
-    const path1Upper = (item.path1 || '').toUpperCase();
-    
-    // CSS 相關功能（客服系統）先檢查
-    const isCSS = descriptionUpper.includes('UC_CSS') ||
-                 descriptionUpper.includes('客戶資料管理') ||
-                 descriptionUpper.includes('合約專案管理') ||
-                 descriptionUpper.includes('輔導紀錄管理') ||
-                 descriptionUpper.includes('情境說明管理') ||
-                 descriptionUpper.includes('最新消息管理') ||
-                 descriptionUpper.includes('通知中心管理') ||
-                 descriptionUpper.includes('數據分析檢視') ||
-                 descriptionUpper.includes('客戶公司管理') ||
-                 descriptionUpper.includes('角色權限') ||
-                 descriptionUpper.includes('統計報表') ||
-                 descriptionUpper.includes('案件管理') ||
-                 path1Upper.includes('CS01001') ||
-                 path1Upper.includes('客服系統');
-                 
-    if (isCSS) {
-      tags.push({ label: 'CSS', color: 'bg-green-100 text-green-700' });
-    } else {
-      // ERP 系統標籤（不包含 CSS 相關）
-      const isERP = (projectNameUpper.includes('ERP') || projectNameUpper.includes('RD2017004')) &&
-                   !descriptionUpper.includes('CSS') &&
-                   !descriptionUpper.includes('客戶') &&
-                   !descriptionUpper.includes('合約') &&
-                   !descriptionUpper.includes('案件') &&
-                   !descriptionUpper.includes('輔導') &&
-                   !descriptionUpper.includes('UC_CSS');
-      
-      if (isERP) {
-        tags.push({ label: 'ERP', color: 'bg-blue-100 text-blue-700' });
-      }
-    }
-    
-    return tags;
   };
 
   // 載入狀態處理
