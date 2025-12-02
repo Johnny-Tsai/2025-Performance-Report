@@ -4,6 +4,11 @@ import { parseCSV } from '../utils/csvParser';
 // 快取載入的資料
 let cachedWorklistData: WorkItem[] | null = null;
 
+// 取得 base URL（支援 GitHub Pages）
+const getBaseUrl = () => {
+  return import.meta.env.BASE_URL || '/';
+};
+
 // 載入 CSV 資料的函數
 export async function loadWorklistData(): Promise<WorkItem[]> {
   // 如果已經有快取資料，直接回傳
@@ -12,7 +17,11 @@ export async function loadWorklistData(): Promise<WorkItem[]> {
   }
 
   try {
-    const response = await fetch('/worklist.csv');
+    const baseUrl = getBaseUrl();
+    const csvPath = `${baseUrl}worklist.csv`;
+    console.log('Loading CSV from:', csvPath);
+    
+    const response = await fetch(csvPath);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -25,6 +34,8 @@ export async function loadWorklistData(): Promise<WorkItem[]> {
       item.path2?.includes('\\2025\\') || 
       item.path2?.includes('/2025/')
     );
+    
+    console.log('Loaded worklist items:', filtered2025Data.length);
     
     // 快取資料
     cachedWorklistData = filtered2025Data;
