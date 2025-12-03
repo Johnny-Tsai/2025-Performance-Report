@@ -4,8 +4,9 @@ import { Header } from './components/Header';
 import { AnnualGoalsSection } from './components/AnnualGoalsSection';
 import { HighlightProjectsPage } from './components/HighlightProjectsPage';
 import { WorklistSection } from './components/WorklistSection';
+import { StandardizationPage } from './components/StandardizationPage';
 
-type PageType = 'main' | 'highlight-projects';
+type PageType = 'main' | 'highlight-projects' | 'standardization';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<PageType>('main');
@@ -24,6 +25,15 @@ function App() {
     return (
       <HighlightProjectsPage
         projects={highlightProjects}
+        onBack={() => navigateTo('main')}
+      />
+    );
+  }
+
+  // 流程標準化頁面
+  if (currentPage === 'standardization') {
+    return (
+      <StandardizationPage
         onBack={() => navigateTo('main')}
       />
     );

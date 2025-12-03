@@ -10,8 +10,12 @@ export function Header({ personalInfo }: HeaderProps) {
     <header className="glass-card p-8 mb-8 animate-fade-in-up">
       <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
         {/* Avatar */}
-        <div className="w-32 h-32 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white text-4xl font-bold shadow-lg">
-          {personalInfo.name.charAt(0)}
+        <div className="w-32 h-32 rounded-full overflow-hidden shadow-lg bg-white">
+          <img 
+            src={`${import.meta.env.BASE_URL}avatar.gif`}
+            alt={personalInfo.name}
+            className="w-full h-full object-cover"
+          />
         </div>
 
         {/* Info */}
