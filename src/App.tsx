@@ -5,8 +5,9 @@ import { AnnualGoalsSection } from './components/AnnualGoalsSection';
 import { HighlightProjectsPage } from './components/HighlightProjectsPage';
 import { WorklistSection } from './components/WorklistSection';
 import { StandardizationPage } from './components/StandardizationPage';
+import { AIPerformanceSection } from './components/AIPerformanceSection';
 
-type PageType = 'main' | 'highlight-projects' | 'standardization';
+type PageType = 'main' | 'highlight-projects' | 'standardization' | 'ai-performance';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<PageType>('main');
@@ -39,6 +40,39 @@ function App() {
     );
   }
 
+  // AI績效報告頁面
+  if (currentPage === 'ai-performance') {
+    return (
+      <div className="min-h-screen py-8 px-4">
+        <div className="max-w-5xl mx-auto">
+          <div className="mb-6">
+            <button
+              onClick={() => navigateTo('main')}
+              className="flex items-center gap-2 bg-white hover:bg-gray-50 text-gray-700 px-4 py-2 rounded-lg shadow-md transition-colors"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              返回績效報告
+            </button>
+          </div>
+          <div className="flex justify-end mb-4 no-print">
+            <button
+              onClick={handlePrint}
+              className="flex items-center gap-2 bg-white hover:bg-gray-50 text-gray-700 px-4 py-2 rounded-lg shadow-md transition-colors"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+              </svg>
+              列印
+            </button>
+          </div>
+          <AIPerformanceSection />
+        </div>
+      </div>
+    );
+  }
+
   // 主頁面
   return (
     <div className="min-h-screen py-8 px-4">
@@ -66,7 +100,13 @@ function App() {
         {performanceData.annualGoals && (
           <AnnualGoalsSection 
             annualGoals={performanceData.annualGoals} 
-            onNavigate={navigateTo}
+            onNavigate={(page) => {
+              if (page === 'ai-performance') {
+                navigateTo('ai-performance');
+              } else {
+                navigateTo(page);
+              }
+            }}
           />
         )}
 

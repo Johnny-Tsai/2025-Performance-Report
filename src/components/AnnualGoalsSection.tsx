@@ -1,6 +1,6 @@
 import { AnnualGoals } from '../types/performance';
 
-type PageType = 'main' | 'highlight-projects' | 'standardization';
+type PageType = 'main' | 'highlight-projects' | 'standardization' | 'ai-performance';
 
 interface AnnualGoalsSectionProps {
   annualGoals: AnnualGoals;
@@ -89,7 +89,9 @@ export function AnnualGoalsSection({ annualGoals, onNavigate }: AnnualGoalsSecti
                     onClick={() => handleLinkClick(goal.linkTo)}
                     className="group inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium transition-colors"
                   >
-                    {goal.linkTo === 'standardization' ? '📐 查看流程標準化詳細內容' : '🏆 查看年度重點亮點專案'}
+                    {goal.linkTo === 'standardization' && '📐 查看流程標準化詳細內容'}
+                    {goal.linkTo === 'highlight-projects' && '🏆 查看年度重點亮點專案'}
+                    {goal.linkTo === 'ai-performance' && '🤖 查看AI效能提升實踐報告'}
                     <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>

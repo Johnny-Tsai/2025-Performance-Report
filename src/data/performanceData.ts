@@ -1084,12 +1084,12 @@ export const performanceData: PerformanceData = {
           '情境案例',
         ],
         achievements: [
-          '✅ 導入GitHub Copilot等AI程式碼助手，提升編程效率約30%',
-          '✅ 運用ChatGPT協助技術文件撰寫與程式碼Review',
-          '⏳ 規劃12月底前完成AI工具使用經驗分享簡報',
-          '⏳ 協助同事導入AI工具，目標讓團隊AI工具使用率達80%',
+          '✅ 導入 GitHub Copilot、Devin、ChatGPT、Gemini 等多款 AI 工具，實現工具生態多元化',
+          '✅ 確立「模型選型」優於「提示優化」的核心認知，指導高效 AI 應用',
+          '✅ 積累完整的 AI 工具使用經驗與失敗教訓，完成 SDD 自動化 90% 準確率突破',
         ],
         weight: 10,
+        linkTo: 'ai-performance',
       },
     ],
     coreCompetencies: [
