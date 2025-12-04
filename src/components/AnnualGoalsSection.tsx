@@ -108,45 +108,62 @@ export function AnnualGoalsSection({ annualGoals, onNavigate }: AnnualGoalsSecti
         <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
           <span className="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm">核心職能</span>
         </h3>
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse">
-            <thead>
-              <tr className="bg-gradient-to-r from-indigo-600 to-indigo-700 text-white">
-                <th className="px-4 py-3 text-left font-semibold w-12 whitespace-nowrap">序號</th>
-                <th className="px-4 py-3 text-left font-semibold w-32 whitespace-nowrap">項目</th>
-                <th className="px-4 py-3 text-left font-semibold whitespace-nowrap">關鍵行為</th>
-                <th className="px-4 py-3 text-center font-semibold w-20 whitespace-nowrap">佔比</th>
-              </tr>
-            </thead>
-            <tbody>
-              {coreCompetencies.map((competency, index) => (
-                <tr
-                  key={competency.id}
-                  className={`border-b border-gray-200 ${
-                    index % 2 === 0 ? 'bg-indigo-50/50' : 'bg-white'
-                  } hover:bg-indigo-100/50 transition-colors`}
-                >
-                  <td className="px-4 py-4 text-center font-medium text-gray-700">{competency.id}</td>
-                  <td className="px-4 py-4 font-medium text-gray-800">{competency.name}</td>
-                  <td className="px-4 py-4">
-                    <ul className="space-y-1 text-gray-700 text-sm">
-                      {competency.behaviors.map((behavior, idx) => (
-                        <li key={idx} className="flex items-start gap-2">
-                          <span className="text-indigo-500 mt-1">•</span>
-                          <span>{behavior}</span>
-                        </li>
+        
+        <div className="space-y-6">
+          {coreCompetencies.map((competency) => (
+            <div 
+              key={competency.id} 
+              className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm"
+            >
+              {/* 標題列 */}
+              <div className="bg-gradient-to-r from-indigo-600 to-indigo-700 text-white px-6 py-4 flex justify-between items-center">
+                <div className="flex items-center gap-3">
+                  <span className="bg-white/20 px-3 py-1 rounded-full text-sm font-medium">
+                    {competency.id}
+                  </span>
+                  <h4 className="font-semibold text-lg">{competency.name}</h4>
+                </div>
+                <span className="bg-white/20 px-4 py-1 rounded-full font-semibold">
+                  {competency.weight}%
+                </span>
+              </div>
+
+              {/* 內容區 */}
+              <div className="p-6">
+                {/* 關鍵行為 */}
+                <div className="mb-4">
+                  <p className="text-sm font-semibold text-gray-600 mb-3">📋 關鍵行為</p>
+                  <ul className="space-y-2 text-gray-700 text-sm">
+                    {competency.behaviors.map((behavior, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <span className="text-indigo-500 mt-0.5">•</span>
+                        <span>{behavior}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* 績效回饋 - 整合在關鍵行為下方 */}
+                {competency.feedback && competency.feedback.length > 0 && (
+                  <div className="mt-5 pt-5 border-t border-gray-200">
+                    <p className="text-sm font-semibold text-gray-600 mb-3">📝 績效回饋（著重於洞察與表達）</p>
+                    <div className="space-y-3">
+                      {competency.feedback.map((item, idx) => (
+                        <div key={idx} className="bg-indigo-50 rounded-lg p-4 border-l-4 border-indigo-500">
+                          <p className="text-sm font-semibold text-indigo-900 mb-1.5">
+                            {item.behavior}
+                          </p>
+                          <p className="text-sm text-gray-700 leading-relaxed">
+                            {item.content}
+                          </p>
+                        </div>
                       ))}
-                    </ul>
-                  </td>
-                  <td className="px-4 py-4 text-center">
-                    <span className="inline-flex items-center justify-center bg-indigo-100 text-indigo-700 font-semibold px-3 py-1 rounded-full">
-                      {competency.weight}%
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

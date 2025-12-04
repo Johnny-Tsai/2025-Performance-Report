@@ -101,6 +101,11 @@ export interface CoreCompetency {
   name: string;
   behaviors: string[];
   weight: number; // 百分比
+  feedback?: {
+    behavior: string;
+    content: string;
+    result?: string;
+  }[];
 }
 
 // 年度績效目標
