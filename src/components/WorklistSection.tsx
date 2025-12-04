@@ -217,6 +217,7 @@ export function WorklistSection() {
   return (
     <section className="glass-card p-6 mb-6">
       <h2 className="section-title">工作清單</h2>
+      <p className="text-sm text-gray-500 mb-4">統計至 2025/12/01</p>
 
       {/* 搜尋與過濾 */}
       <div className="flex flex-wrap gap-4 mb-6 items-center">
