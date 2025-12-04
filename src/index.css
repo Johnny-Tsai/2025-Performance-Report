@@ -53,26 +53,3 @@ body {
 .animate-fade-in-up {
   animation: fadeInUp 0.6s ease-out forwards;
 }
-
-.print-only {
-  display: none;
-}
-
-@media print {
-  body {
-    background: white;
-  }
-  
-  .glass-card {
-    box-shadow: none;
-    border: 1px solid #e5e7eb;
-  }
-  
-  .no-print {
-    display: none;
-  }
-  
-  .print-only {
-    display: block;
-  }
-}

@@ -264,6 +264,39 @@ export function AIPerformanceSection() {
         </div>
       </section>
 
+      {/* 真香時刻 */}
+      <section className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-lg shadow-md p-6 border border-amber-200">
+        <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+          🍚 真香定律
+        </h3>
+        <div className="flex flex-col md:flex-row gap-6 items-center">
+          <div className="flex-shrink-0">
+            <img 
+              src="./zhenxiang.jpg" 
+              alt="真香" 
+              className="rounded-lg shadow-lg max-w-xs md:max-w-sm"
+            />
+          </div>
+          <div className="space-y-3 text-gray-700">
+            <p className="text-lg font-medium text-amber-800">
+              「AI 寫的程式碼錯誤百出...」
+            </p>
+            <p className="text-lg font-medium text-amber-800">
+              「我就是自己手動寫程式，從這兒跳下去...」
+            </p>
+            <p className="text-lg font-medium text-amber-800">
+              「也不會用 AI 來幫我工作！」
+            </p>
+            <p className="text-2xl font-bold text-orange-600 mt-4">
+              「真香！」🍚
+            </p>
+            <p className="text-sm text-gray-600 italic mt-2">
+              從懷疑到依賴，這就是每位開發者使用 AI 輔助工具的必經之路。
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* 結語 */}
       <section className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg shadow-md p-6 border-t-4 border-blue-500">
         <h3 className="text-xl font-bold text-gray-800 mb-3">
